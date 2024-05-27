@@ -1,0 +1,6 @@
+&INPUTPP
+  atom_proj = .true.
+  outdir = './out/'
+  prefix = 'silicon'
+  seedname = 'silicon'
+/

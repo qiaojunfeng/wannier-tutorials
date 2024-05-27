@@ -37,3 +37,5 @@ silicon_band.dat
 silicon_band.gnu
 silicon_band.kpt
 silicon_band.labelinfo.dat
+val/
+cond/
