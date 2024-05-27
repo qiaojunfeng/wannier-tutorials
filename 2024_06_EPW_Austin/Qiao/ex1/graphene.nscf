@@ -5,7 +5,7 @@
   max_seconds =   4.1040000000d+04
   outdir = './out/'
   prefix = 'graphene'
-  pseudo_dir = '../../pseudo/'
+  pseudo_dir = 'pseudo/'
   tprnfor = .true.
   tstress = .true.
   verbosity = 'high'
