@@ -72,10 +72,8 @@ test:
 	./silicon_bandsdiff.gnu
 	julia --project=jl_project -e 'using Pkg; Pkg.instantiate()'
 	./mrwf.jl
-	cd val
-	$(MPI_CMD) wannier90.x silicon
-	cd ../cond
-	$(MPI_CMD) wannier90.x silicon
+	cd val && $(MPI_CMD) wannier90.x silicon
+	cd cond && $(MPI_CMD) wannier90.x silicon
 	./silicon_bandsdiff_val.gnu
 	./silicon_bandsdiff_cond.gnu
 	@echo "All calculations finished successfully"
