@@ -48,16 +48,18 @@ clean:
 	echo "Cleaning up..."
 	rm -r $(outfiles)
 
-MPI_NP = 8
+# Usually, it is mpirun. For TACC machine, use ibrun. If not set, run in serial.
+# MPI_CMD = mpirun -n 8
+# MPI_CMD = ibrun
 
 test:
 	@echo "Testing all calculations"
-	mpirun -n $(MPI_NP) pw.x < silicon.scf > scf.out
-	mpirun -n $(MPI_NP) pw.x < silicon.bands > bands.out
-	mpirun -n $(MPI_NP) bands.x < silicon.bandsx > bandsx.out
-	mpirun -n $(MPI_NP) pw.x < silicon.nscf > nscf.out
+	$(MPI_CMD) pw.x < silicon.scf > scf.out
+	$(MPI_CMD) pw.x < silicon.bands > bands.out
+	$(MPI_CMD) bands.x < silicon.bandsx > bandsx.out
+	$(MPI_CMD) pw.x < silicon.nscf > nscf.out
 	wannier90.x -pp silicon
-	mpirun -n $(MPI_NP) pw2wannier90.x < silicon.pw2wan > pw2wan.out
-	mpirun -n $(MPI_NP) wannier90.x silicon
+	$(MPI_CMD) pw2wannier90.x < silicon.pw2wan > pw2wan.out
+	$(MPI_CMD) wannier90.x silicon
 	./silicon_bandsdiff.gnu
 	@echo "All calculations finished successfully"
