@@ -47,3 +47,17 @@ default:
 clean:
 	echo "Cleaning up..."
 	rm -r $(outfiles)
+
+MPI_NP = 8
+
+test:
+	@echo "Testing all calculations"
+	mpirun -n $(MPI_NP) pw.x < silicon.scf > scf.out
+	mpirun -n $(MPI_NP) pw.x < silicon.bands > bands.out
+	mpirun -n $(MPI_NP) bands.x < silicon.bandsx > bandsx.out
+	mpirun -n $(MPI_NP) pw.x < silicon.nscf > nscf.out
+	wannier90.x -pp silicon
+	mpirun -n $(MPI_NP) pw2wannier90.x < silicon.pw2wan > pw2wan.out
+	mpirun -n $(MPI_NP) wannier90.x silicon
+	./silicon_bandsdiff.gnu
+	@echo "All calculations finished successfully"
