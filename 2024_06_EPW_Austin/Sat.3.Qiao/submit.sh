@@ -8,7 +8,7 @@
 #SBATCH --output=slurm.out
 #SBATCH --error=slurm.err
 
-module use ~/modulefiles
+module use /work2/05193/sabyadk/stampede3/EPWSchool2024/autowan/modulefiles
 module load autowan
 
 # for TACC machine, use ibrun instead of mpirun, e.g.
