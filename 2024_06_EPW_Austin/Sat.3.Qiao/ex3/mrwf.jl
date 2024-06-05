@@ -1,6 +1,11 @@
-#!/usr/bin/env -S julia --project=jl_project
+#!/usr/bin/env julia
 # Split valence and conduction Wannier functions.
-using Wannier
+if Wannier in values(Base.loaded_modules)
+    # when using sysimage
+    using .Wannier
+else
+    using Wannier
+end
 
 seedname = "silicon"
 win = read_win("$seedname.win")
