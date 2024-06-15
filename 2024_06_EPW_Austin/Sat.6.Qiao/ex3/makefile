@@ -66,7 +66,7 @@ test:
 	$(MPI_CMD) pw.x < silicon.bands > bands.out
 	$(MPI_CMD) bands.x < silicon.bandsx > bandsx.out
 	$(MPI_CMD) pw.x < silicon.nscf > nscf.out
-	wannier90.x -pp silicon
+	$(MPI_CMD) wannier90.x -pp silicon
 	$(MPI_CMD) pw2wannier90.x < silicon.pw2wan > pw2wan.out
 	$(MPI_CMD) wannier90.x silicon
 	./silicon_bandsdiff.gnu

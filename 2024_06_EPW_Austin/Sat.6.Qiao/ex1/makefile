@@ -63,7 +63,7 @@ test:
 	gnuplot graphene.projbands.gnu
 	ps2pdf graphene.projbands.gnu_projected.ps
 	$(MPI_CMD) pw.x < graphene.nscf > nscf.out
-	wannier90.x -pp graphene
+	$(MPI_CMD) wannier90.x -pp graphene
 	$(MPI_CMD) pw2wannier90.x < graphene.pw2wan > pw2wan.out
 	$(MPI_CMD) wannier90.x graphene
 	./graphene_bandsdiff.gnu

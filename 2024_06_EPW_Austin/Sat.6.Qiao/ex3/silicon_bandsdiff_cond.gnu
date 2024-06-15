@@ -1,4 +1,4 @@
-#!/usr/bin/env -S gnuplot -p
+#!/usr/bin/env gnuplot
 set terminal pdf enhanced color dashed lw 1 size 6in,6in
 set output "silicon_bandsdiff_cond.pdf"
 set size ratio 1

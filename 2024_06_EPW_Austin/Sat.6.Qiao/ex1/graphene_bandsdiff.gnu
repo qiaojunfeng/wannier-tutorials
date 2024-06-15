@@ -1,4 +1,4 @@
-#!/usr/bin/env -S gnuplot -p
+#!/usr/bin/env gnuplot
 set terminal pdf enhanced color dashed lw 1 size 6in,9in
 set output "graphene_bandsdiff.pdf"
 set size ratio 1.5
